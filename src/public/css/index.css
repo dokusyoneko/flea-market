@@ -1,30 +1,28 @@
-header{
-    background-color: black;
 
-}
-
-.header__inner{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    margin: 0px 20px;
+.main__tab{
     height: 100px;
+    border-bottom: solid 1px black;
+    position: relative;
 }
 
-.header__inner input{
-    width: 25%;
-    height: 35px;
-}
-
-.header__inner__sell{
+.main__tab__inner{
+    position: absolute;
+    bottom: 0;
+    left: 0px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    color: black;
+    gap: 80px;
+    padding-left: 200px;
+    font-weight: bold;
+}
+
+.main__tab__inner a{
     text-decoration: none;
-    width: 60px;
-    height: 35px;
-    border-radius: 4px;
+}
+
+.main__tab--favorite{
+    color: red;
+}
+
+.main__tab--mylist{
+    color: black;
 }

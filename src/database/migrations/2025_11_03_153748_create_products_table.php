@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->string('condition');
             $table->boolean('is_sold')->default(false);
-            $table->string('path');
+            $table->string('image_path');
             $table->timestamps();
         });
     }

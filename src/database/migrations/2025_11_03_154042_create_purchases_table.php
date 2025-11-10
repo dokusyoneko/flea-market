@@ -17,7 +17,7 @@ class CreatePurchasesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->string('postal_code', 10);
+            $table->string('postal_code', 8);
             $table->string('address');
             $table->string('building_name')->nullable();
             $table->string('payment_method');
