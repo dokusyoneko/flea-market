@@ -16,13 +16,17 @@ use App\Http\Controllers\MypageController;
 |
 */
 
-Route::get('/', [ItemController::class, 'index']);
+Route::get('/', [AuthController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [AuthController::class, 'index']);
+    Route::get('/', [ItemController::class, 'index']);
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage.index');
     Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('mypage.edit');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/item/{item_id}', [ItemController::class, 'show']);
 });

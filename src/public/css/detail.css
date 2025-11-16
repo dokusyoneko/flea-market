@@ -1,0 +1,109 @@
+main {
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.main__left,
+.main__right {
+    width: 40%;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.main__left__img {
+    display: block;
+    width: 95%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.main__right__name {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.main__right__brand {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.main__right__price {
+    font-size: 30px;
+}
+
+.fa-heart,
+.fa-comment {
+    font-size: 24px;
+    margin: 20px;
+    vertical-align: middle;
+}
+
+.main__right__purchase--button,
+.main__right__comment--button {
+    background-color: red;
+    color: #fff;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: block;
+    font-weight: bold;
+}
+
+.main__right__subtitle{
+    font-size: 25px;
+}
+
+.main__right__textarea{
+    width: 100%;
+    height: 200px;
+    font-size: 16px;
+}
+
+.category__class,
+.condition__class{
+    display: flex;
+}
+
+.main__right__subtitle--sub{
+    margin-right: 50px;
+}
+
+.categories,
+.conditions{
+    display: flex;
+    align-items: center;
+}
+
+.main__right__category{
+    background-color: gray;
+    color: white;
+    border-radius: 20px;
+    height: 30px;
+    margin: 5px;
+    align-items: center;
+}
+
+.main__right__condition{
+    margin: 5px;
+    align-items: center;
+}
+
+.main__right__subtitle--subtitle{
+    margin: 0;
+}
+
+
+.main__right__comment--area{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 40px;
+}

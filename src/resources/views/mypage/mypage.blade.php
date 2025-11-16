@@ -5,11 +5,17 @@
 @endsection
 
 @section('content')
-<h2>ユーザー名</h2>
+<div class="profile__content">
+    <div class="form__profile__image">
+        <img src="/images/sample-profile.png" alt="" class="profile__image">
+        <h2>ユーザー名</h2>
+        <a class="profile__image__button">プロフィールを編集</a>
+    </div>
+</div>
 <div class="main__tab">
     <div class="main__tab__inner">
-        <a class="main__tab--favorite" href="/login">おすすめ</a>
-        <a class="main__tab--mylist" href="/mypage">マイリスト</a>
+        <a class="main__tab--favorite" href="/login">出品した商品</a>
+        <a class="main__tab--mylist" href="/mypage">購入した商品</a>
     </div>
 </div>
 <div>

@@ -1,0 +1,72 @@
+.profile__content{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 0px;
+}
+
+.form__profile__image {
+    margin: 0 auto;
+    width: 70%;
+    height: 180px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form__profile__image h2{
+    width: 45%;
+    font-size: 30px;
+}
+
+.profile__image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: solid 1px none;
+    background-color: rgb(183, 180, 180);
+}
+
+.profile__image__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    border: solid 1px red;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 50px;
+    width: 230px;
+    cursor: pointer;
+}
+
+.main__tab {
+    height: 30px;
+    border-bottom: solid 1px black;
+    position: relative;
+}
+
+.main__tab__inner {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    display: flex;
+    gap: 80px;
+    padding-left: 200px;
+    font-weight: bold;
+}
+
+.main__tab__inner a {
+    text-decoration: none;
+}
+
+.main__tab--favorite {
+    color: red;
+    font-size: 20px;
+}
+
+.main__tab--mylist {
+    color: black;
+    font-size: 20px;
+}

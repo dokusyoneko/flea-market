@@ -13,8 +13,8 @@
         @csrf
         <div class="form__group">
             <div class="form__profile__image">
-                <img src="/images/sample-profile.png" alt="プロフィール画像" class="profile__image">
-                <button type="button" class="profile__image__button">画像を選択する</button>
+                <img src="/images/sample-profile.png" alt="" class="profile__image">
+                <a class="profile__image__button">画像を選択する</a>
             </div>
             <div class="form__group-title">
                 <span class="form__label--item">ユーザー名</span>
