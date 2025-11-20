@@ -58,8 +58,14 @@ main {
     font-weight: bold;
 }
 
-.main__right__subtitle{
+.main__right__subtitle--info,
+.main__right__subtitle--description,
+.main__right__subtitle--comment{
     font-size: 25px;
+}
+
+.main__right__subtitle--description{
+    margin: 20px 0px 0px 0px;
 }
 
 .main__right__textarea{
@@ -71,10 +77,12 @@ main {
 .category__class,
 .condition__class{
     display: flex;
+    padding: 5px 0px 20px 0px;
 }
 
 .main__right__subtitle--sub{
-    margin-right: 50px;
+    margin:5px 50px 5px 0px;
+    align-items: center;
 }
 
 .categories,
@@ -98,7 +106,8 @@ main {
 }
 
 .main__right__subtitle--subtitle{
-    margin: 0;
+    margin: 5px 0px;
+    font-size: 20px;
 }
 
 

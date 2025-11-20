@@ -1,0 +1,72 @@
+.main__inner{
+    max-width: 1400px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.main__left{
+    width: 65%;
+}
+
+.left__item{
+    display: flex;
+    border-bottom: 1px solid black;
+}
+
+
+.main__left__img{
+    width: 200px;
+    height: 200px;
+}
+
+.main__right{
+    width: 35%;
+}
+
+.left__method select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+}
+
+.left__address {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.left__address a {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: blue;
+    text-decoration: underline;
+}
+
+.main__right table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.main__right td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+}
+
+
+.purchase__button {
+    display: inline-block;
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 20px;
+}

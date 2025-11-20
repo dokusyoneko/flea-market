@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/item/{item_id}', [ItemController::class, 'show']);
+    Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');;
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
 });

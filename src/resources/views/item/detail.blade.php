@@ -14,10 +14,12 @@
     <div class="main__right__price">¥{{ $product->price }}(税込)</div>
     <i class="fa-regular fa-heart"></i>
     <i class="fa-regular fa-comment"></i>
-    <button class="main__right__purchase--button">購入手続きへ</button>
-    <h3 class="main__right__subtitle">商品説明</h3>
+    <a href="{{ route('purchase.show', ['item_id' => $product->id]) }}" class="main__right__purchase--button">
+        購入手続きへ
+    </a>
+    <h3 class="main__right__subtitle--info">商品説明</h3>
     <p class="main__right__description">{{ $product->description }}</p>
-    <h3 class="main__right__subtitle">商品の情報</h3>
+    <h3 class="main__right__subtitle--description">商品の情報</h3>
     <div class="category__class">
         <h4 class="main__right__subtitle--sub">カテゴリー</h4>
         <div class="categories">
@@ -32,7 +34,7 @@
             <div class="main__right__condition">{{ $product->condition }}</div>
         </div>
     </div>
-    <h3 class="main__right__subtitle">コメント({{ $product->comments->count() }})</h3>
+    <h3 class="main__right__subtitle--comment">コメント({{ $product->comments->count() }})</h3>
     @foreach($product->comments as $comment)
     <div class="main__right__comment">
         <img src="{{ $user_profile->avatar }}" alt="admin">
