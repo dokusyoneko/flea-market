@@ -9,7 +9,8 @@ class ItemController extends Controller
 {
     public function index()
     {
-        return view('item.index');
+        $products = Product::all();
+        return view('item.index', compact('products'));
     }
 
     public function show($item_id)

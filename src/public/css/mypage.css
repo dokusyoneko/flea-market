@@ -112,6 +112,11 @@
     text-decoration: none;
 }
 
+.main__product--inner h3 {
+    text-align: left;
+    color: black;
+}
+
 
 .main__product--inner li a:hover img {
     transform: scale(1.05);

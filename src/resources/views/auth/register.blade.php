@@ -74,4 +74,4 @@
         <a class="login__button-submit" href="/login">ログインはこちら</a>
     </div>
 </div>
-@endsectionh
+@endsection

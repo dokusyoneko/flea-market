@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage.index');
     Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('mypage.edit');
+    Route::post('/mypage/profile', [MypageController::class, 'update'])->name('mypage.update');
 });
 
 Route::middleware('auth')->group(function () {
@@ -33,5 +34,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/purchase/address', [PurchaseController::class, 'editAddress'])->name('address.edit');
+    Route::post('/purchase/address', [PurchaseController::class, 'updateAddress'])->name('address.update');
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
 });

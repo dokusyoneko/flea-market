@@ -6,67 +6,111 @@
 }
 
 .main__left{
-    width: 65%;
+    width: 55%;
+    margin-top: 80px;
+}
+
+.main__right {
+    width: 30%;
+    margin-top: 80px;
 }
 
 .left__item{
     display: flex;
     border-bottom: 1px solid black;
+    height: 250px;
+    width: 100%;
 }
 
 
-.main__left__img{
+.left__item__img__--inner{
     width: 200px;
     height: 200px;
+    margin-right: 50px;
 }
 
-.main__right{
-    width: 35%;
+.left__item__content h2{
+    margin: 0px 0px 10px 0px;
 }
 
-.left__method select {
+.left__item__content p{
+    font-size: 30px;
+    margin: 0;
+}
+
+.left__method{
+    height: 160px;
+    border-bottom: 1px solid black;
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    background-color: transparent;
+}
+
+.left__method__inner,
+.left__address__inner {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.left__method__inner select{
+    width: 220px;
+    height: 25px;
+    font-size: 15px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin-left: 50px;
+    margin-top: 10px;
 }
 
 .left__address {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    height: 160px;
+    border-bottom: 1px solid black;
+    width: 100%;
 }
 
-.left__address a {
+.address__inner__shipping{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.address__inner__shipping a {
     display: inline-block;
     margin-bottom: 10px;
     color: blue;
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+.address__inner__address{
+    margin-left: 50px;
 }
 
 .main__right table {
     width: 100%;
+    height: 250px;
+    border: 1px solid black;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
 .main__right td {
+    width: 50%;
+    font-size: 20px;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
-    font-size: 16px;
+    border-bottom: 1px solid black;
+    text-align: center;
 }
+
 
 
 .purchase__button {
     display: inline-block;
     background-color: red;
     color: white;
+    width: 100%;
     text-align: center;
     padding: 12px 24px;
-    font-size: 18px;
+    font-size: 25px;
     border-radius: 6px;
     text-decoration: none;
     margin-top: 20px;
+    font-weight: bold;
 }
