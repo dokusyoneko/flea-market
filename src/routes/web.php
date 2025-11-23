@@ -30,7 +30,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');;
+    Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
+    Route::get('/sell', [ItemController::class, 'showSellForm'])->name('item.sell');
 });
 
 Route::middleware('auth')->group(function () {

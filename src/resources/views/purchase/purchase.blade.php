@@ -19,7 +19,7 @@
         <div class="left__method">
             <div class="left__method__inner">
                 <h3>支払い方法</h3>
-                <select id="payment_method" name="payment_method" required>
+                <select class="payment_method" name="payment_method" required>
                     <option value="disabled selected">選択してください</option>
                     <option value="convenience_store">コンビニ払い</option>
                     <option value="credit_card">カード支払い</option>

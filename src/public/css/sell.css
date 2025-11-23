@@ -1,0 +1,123 @@
+.sell__content{
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 30px 15px;
+}
+
+.product__title{
+    text-align: center;
+}
+
+form{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.image-preview {
+    max-width: 300px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.custom-file-input {
+    display: none;
+}
+
+.custom-file-label {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: white;
+    color: red;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 auto;
+    border: solid 1px red;
+}
+
+.custom-file-label:hover {
+    background-color: rgb(238, 201, 201);
+}
+
+.product__img__content{
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    border: dotted 2px darkgray;
+    align-content: center;
+    border-radius: 3px;
+}
+
+.product__detail h2{
+    border-bottom: solid 2px rgb(197, 193, 193);
+}
+
+.category__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category__tag {
+    display: flex;
+    align-items: center;
+    border: 1px solid red;
+    color: red;
+    border-radius: 20px;
+    padding: 6px 12px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.category__tag input[type="checkbox"] {
+    display: none;
+}
+
+.category__tag input[type="checkbox"]:checked+span {
+    background-color: #ff5555;
+    color: white;
+    border-radius: 20px;
+    padding: 6px 12px;
+}
+
+.product__detail select{
+    width: 100%;
+    height: 30px;
+}
+
+.product__description h2{
+    border-bottom: solid 2px rgb(197, 193, 193);
+}
+
+.product__description input{
+    width: 100%;
+    height: 30px;
+}
+
+.product__description textarea{
+    width: 100%;
+    height: 90px;
+}
+
+.form__button {
+    margin-top: 20px;
+}
+
+.form__button-submit {
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    background: #ff5555;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 45px;
+}
