@@ -9,7 +9,7 @@
     <div class="product__title">
         <h2>商品の出品</h2>
     </div>
-    <form class="form" action="/sell" method="post">
+    <form class="form" action="/sell" method="post" enctype="multipart/form-data">
         @csrf
         <div class="product__img">
             <div class="product__img__title">
@@ -33,8 +33,8 @@
             @endforeach
             </div>
             <h3>商品の状態</h3>
-            <select class="product_condition" name="product_condition" required>
-                <option value="disabled selected">選択してください</option>
+            <select class="product_condition" name="condition" required>
+                <option value="" disabled selected>選択してください</option>
                 <option>良好</option>
                 <option>目立った傷や汚れなし</option>
                 <option>やや傷や汚れあり</option>
@@ -44,13 +44,25 @@
         <div class="product__description">
             <h2>商品名と説明</h2>
             <h3>商品名</h3>
-            <input type="text">
+            <input type="text" name="name">
+            @error('name')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
             <h3>ブランド名</h3>
-            <input type="text">
+            <input type="text" name="brand">
+            @error('brand')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
             <h3>商品の説明</h3>
-            <textarea name="" id=""></textarea>
+            <textarea name="description" id=""></textarea>
+            @error('description')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
             <h3>販売価格</h3>
-            <input type="text" name="price" value="¥">
+            <input type="text" name="price" value="{{ old('price') }}">
+            @error('price')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form__button">
             <button class="form__button-submit">出品する</button>

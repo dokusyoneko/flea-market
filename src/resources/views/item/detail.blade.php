@@ -6,7 +6,11 @@
 
 @section('content')
 <div class="main__left">
-    <img class="main__left__img" src="{{ $product->image_path }}" alt="商品画像">
+    @if($product->image_path)
+        <img class="main__left__img" src="{{ asset('storage/' . $product->image_path) }}" alt="商品画像">
+    @else
+        <p>画像は登録されていません</p>
+    @endif
 </div>
 <div class="main__right">
     <h2 class="main__right__name">{{ $product->name }}</h2>
