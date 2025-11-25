@@ -24,7 +24,7 @@
             @foreach($products as $product)
             <li>
                 <a href="{{ route('item.show', ['item_id' => $product->id]) }}">
-                    <img src="{{ $product->image_path }}" alt="{{ $product->name }}">
+                    <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
                     <h3>{{ $product->name }}</h3>
                 </a>
             </li>

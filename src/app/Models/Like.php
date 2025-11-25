@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
-    use HasFactory;
-
     public $timestamps = false;
 
     protected $fillable = [
@@ -20,7 +17,6 @@ class Like extends Model
         'created_at' => 'datetime',
     ];
 
-
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -30,5 +26,5 @@ class Like extends Model
     {
         return $this->belongsTo(Product::class);
     }
-
 }
+

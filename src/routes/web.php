@@ -5,6 +5,8 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +41,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase/address', [PurchaseController::class, 'editAddress'])->name('address.edit');
     Route::post('/purchase/address', [PurchaseController::class, 'updateAddress'])->name('address.update');
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/products/{id}/like', [LikeController::class, 'toggle'])
+    ->name('products.like');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/products/{id}/comments', [CommentController::class, 'store'])
+    ->name('products.comment');
 });
