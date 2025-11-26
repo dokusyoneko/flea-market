@@ -15,12 +15,17 @@
 <div class="main__right">
     <h2 class="main__right__name">{{ $product->name }}</h2>
     <div class="main__right__brand">{{ $product->brand }}</div>
-    <div class="main__right__price">¥{{ $product->price }}(税込)</div>
-    <i id="like-icon-{{ $product->id }}" class="fa-regular fa-heart {{ $product->likes->contains('user_id', auth()->id()) ? 'text-red' : 'text-gray' }}"onclick="toggleLike({{ $product->id }})"></i>
-<span id="likes-count-{{ $product->id }}">{{ $product->likes->count() }}</span>
-
-    <i class="fa-regular fa-comment"></i>
-    <span id="comments-count-{{ $product->id }}">{{ $product->comments->count() }}</span>
+    <div class="main__right__price">¥{{ number_format($product->price) }}(税込)</div>
+    <div class="main__right__icons">
+        <div class="icon-block">
+            <i id="like-icon-{{ $product->id }}" class="fa-regular fa-heart {{ $product->likes->contains('user_id', auth()->id()) ? 'text-red' : 'text-gray' }}"onclick="toggleLike({{ $product->id }})"></i>
+            <div class="icon-count" id="likes-count-{{ $product->id }}">{{ $product->likes->count() }}</div>
+        </div>
+        <div class="icon-block">
+            <i class="fa-regular fa-comment"></i>
+            <div class="icon-count" id="comments-count-{{ $product->id }}">{{ $product->comments->count() }}</div>
+        </div>
+    </div>
     <a href="{{ route('purchase.show', ['item_id' => $product->id]) }}" class="main__right__purchase--button">
         購入手続きへ
     </a>
@@ -44,8 +49,10 @@
     <h3 class="main__right__subtitle--comment">コメント({{ $product->comments->count() }})</h3>
     @foreach($product->comments as $comment)
     <div class="main__right__comment">
-        <img src="{{ $comment->user->profile->avatar ?? asset('images/default-avatar.png') }}" alt="user">
-        <div class="main__right__user--name">{{ $comment->user->name }}</div>
+        <div class="main__right__comment--img--name">
+            <img class="comment-avatar" src="{{ $comment->user->profile->avatar ?? asset('images/default-avatar.png') }}" alt="user">
+            <div class="main__right__user--name">{{ $comment->user->name }}</div>
+        </div>
         <div class="main__right__user--comment">{{ $comment->content }}</div>
     </div>
     @endforeach

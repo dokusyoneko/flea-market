@@ -43,6 +43,35 @@ main {
     vertical-align: middle;
 }
 
+.text-red {
+    color: red;
+}
+
+.main__right__icons {
+    display: flex;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+.icon-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 10%;
+
+}
+
+.icon-block i {
+    font-size: 25px;
+    margin-bottom: 2px;
+}
+
+.icon-count {
+    font-size: 14px;
+    margin-top: 0px;
+    color: black;
+}
+
 .main__right__purchase--button,
 .main__right__comment--button {
     background-color: red;
@@ -105,6 +134,29 @@ main {
 .main__right__condition{
     margin: 5px;
     align-items: center;
+}
+
+.main__right__comment--img--name{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.comment-avatar,
+.main__right__user--name{
+    align-content: center;
+    font-weight: bolder;
+}
+
+.main__right__user--comment{
+    background-color: gainsboro;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
 }
 
 .main__right__subtitle--subtitle{
