@@ -16,29 +16,30 @@ class MypageController extends Controller
     }
 
     public function edit()
-{
-    $profile = Auth::user()->profile;
-    return view('mypage.profile', compact('profile'));
-}
+    {
+        $profile = Auth::user()->profile;
+        return view('mypage.profile', compact('profile'));
+    }
 
     public function update(Request $request)
     {
-        $validated = $request->validate([
-        'username'      => 'required|string|max:255',
-        'postal_code'   => 'required|string|max:8',
-        'address'       => 'required|string|max:255',
-        'building_name' => 'nullable|string|max:255',
-]);
+        $user = auth()->user();
 
-        $profile = Auth::user()->profile;
+        $profile = $user->profile ?? new UserProfile(['user_id' => $user->id]);
 
-        if (!$profile) {
-            $profile = new UserProfile();
-            $profile->user_id = Auth::id();
+        if ($request->hasFile('avatar')) {
+        $path = $request->file('avatar')->store('avatars', 'public');
+        $user->profile->avatar = $path;
         }
 
-        $profile->fill($validated)->save();
+        $user->profile->username = $request->username;
+        $user->profile->postal_code = $request->postal_code;
+        $user->profile->address = $request->address;
+        $user->profile->building_name = $request->building_name;
 
-        return redirect()->route('mypage.edit')->with('success', 'プロフィールを更新しました');
-    }
+        $user->profile->save();
+
+    return redirect('/')->with('success', 'プロフィールを更新しました');
+}
+
 }

@@ -7,7 +7,7 @@
 @section('content')
 <div class="profile__content">
     <div class="form__profile__image">
-        <img src="/images/sample-profile.png" alt="" class="profile__image">
+        <img src="{{ Auth::user()->profile->avatar ? asset('storage/' . Auth::user()->profile->avatar) : asset('images/default-avatar.png') }}" alt="プロフィール画像" class="profile__image">
         <h2>{{ Auth::user()->name }}</h2>
         <a class="profile__image__button" href="/mypage/profile">プロフィールを編集</a>
     </div>

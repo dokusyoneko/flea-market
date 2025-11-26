@@ -50,7 +50,7 @@
     @foreach($product->comments as $comment)
     <div class="main__right__comment">
         <div class="main__right__comment--img--name">
-            <img class="comment-avatar" src="{{ $comment->user->profile->avatar ?? asset('images/default-avatar.png') }}" alt="user">
+            <img class="comment-avatar" src="{{ $comment->user->profile && $comment->user->profile->avatar ? asset('storage/' . $comment->user->profile->avatar) : asset('images/default-avatar.png') }}" alt="user">
             <div class="main__right__user--name">{{ $comment->user->name }}</div>
         </div>
         <div class="main__right__user--comment">{{ $comment->content }}</div>
