@@ -27,6 +27,10 @@
     color: black;
 }
 
+.main__tab--black {
+    color: black;
+}
+
 .main__product {
     max-width: 1400px;
     margin: 0 auto;

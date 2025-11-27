@@ -3,16 +3,30 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
-
+use App\Models\Like;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        if ($request->query('data') === 'mypage') {
+            $user = Auth::user();
+
+            if (!$user) {
+                return redirect()->route('login');
+            }
+
+            $likedProductIds = Like::where('user_id', $user->id)->pluck('product_id');
+            $products = Product::whereIn('id', $likedProductIds)->get();
+        } else {
+            $products = Product::all();
+        }
         return view('item.index', compact('products'));
     }
+
 
     public function show($item_id)
     {

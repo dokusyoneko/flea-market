@@ -21,9 +21,10 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/', [AuthController::class, 'index']);
 
-Route::middleware('auth')->group(function () {
-    Route::get('/', [ItemController::class, 'index']);
-});
+
+Route::get('/', [ItemController::class, 'index']);
+Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage.index');
@@ -32,7 +33,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
     Route::get('/sell', [ItemController::class, 'showSellForm'])->name('item.sell');
     Route::post('/sell', [ItemController::class, 'store'])->name('item.store');
 });

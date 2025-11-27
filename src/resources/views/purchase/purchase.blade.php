@@ -9,18 +9,18 @@
     <div class="main__left">
         <div class="left__item">
             <div class="left__item__img">
-                <img class="left__item__img__--inner" src="{{ $product->image_path }}" alt="商品画像">
+                <img class="left__item__img__--inner" src="{{ asset('storage/' . $product->image_path) }}" alt="商品画像">
             </div>
             <div class="left__item__content">
                 <h2>{{ $product->name }}</h2>
-                <p>¥{{ $product->price }}</p>
+                <p>¥{{ number_format($product->price) }}</p>
             </div>
         </div>
         <div class="left__method">
             <div class="left__method__inner">
                 <h3>支払い方法</h3>
-                <select class="payment_method" name="payment_method" required>
-                    <option value="disabled selected">選択してください</option>
+                <select class="payment_method" name="payment_method" id="payment-method" required>
+                    <option value="" disabled selected>選択してください</option>
                     <option value="convenience_store">コンビニ払い</option>
                     <option value="credit_card">カード支払い</option>
                 </select>
@@ -33,7 +33,8 @@
                     <a href="{{ route('address.edit') }}">変更する</a>
                 </div>
                 <div class="address__inner__address">
-                    <p>{{ $user_profile->postal_code }}</p>
+                    <p>〒{{ substr($user_profile->postal_code, 0, 3) . '-' . substr($user_profile->postal_code, 3) }}</p>
+
                     <p>{{ $user_profile->address }}{{ $user_profile->building_name }}</p>
                 </div>
             </div>
@@ -43,14 +44,31 @@
         <table>
             <tr>
                 <td>商品代金</td>
-                <td class="td__price">¥{{ $product->price }}</td>
+                <td class="td__price">¥{{ number_format($product->price) }}</td>
             </tr>
             <tr>
                 <td>支払い方法</td>
-                <td>コンビニ支払い</td>
+                <td id="selected-method">コンビニ支払い</td>
             </tr>
         </table>
         <a href="" class="purchase__button">購入する</a>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const select = document.getElementById('payment-method');
+    const display = document.getElementById('selected-method');
+
+    const labels = {
+        convenience_store: 'コンビニ支払い',
+        credit_card: 'カード支払い',
+    };
+
+    select.addEventListener('change', function () {
+        const code = select.value;
+        display.textContent = labels[code] || '選択してください';
+    });
+});
+</script>
 @endsection
