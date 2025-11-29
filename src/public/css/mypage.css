@@ -72,6 +72,10 @@
     font-size: 20px;
 }
 
+.active-tab {
+    color: red;
+}
+
 .main__product{
     max-width: 1400px;
     margin: 0 auto;

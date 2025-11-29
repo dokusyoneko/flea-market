@@ -25,12 +25,6 @@ class PurchaseController extends Controller
 
     public function updateAddress(Request $request)
     {
-        $validated = $request->validate([
-        'postal_code'   => 'required|string|max:8',
-        'address'       => 'required|string|max:255',
-        'building_name' => 'nullable|string|max:255',
-]);
-
         $profile = Auth::user()->profile;
 
         if (!$profile) {
@@ -38,7 +32,15 @@ class PurchaseController extends Controller
             $profile->user_id = Auth::id();
         }
 
-        $profile->fill($validated)->save();
+        $profile->fill($request->only([
+            'username',
+            'avatar',
+            'postal_code',
+            'address',
+            'building_name',
+        ]));
+
+        $profile->save();
 
         return redirect()->route('purchase.show', ['item_id' => session('current_item_id')])
             ->with('success', '住所を更新しました');

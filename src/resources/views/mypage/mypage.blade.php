@@ -7,15 +7,16 @@
 @section('content')
 <div class="profile__content">
     <div class="form__profile__image">
-        <img src="{{ Auth::user()->profile->avatar ? asset('storage/' . Auth::user()->profile->avatar) : asset('images/default-avatar.png') }}" alt="プロフィール画像" class="profile__image">
+        <img src="{{ optional(Auth::user()->profile)->avatar ? asset('storage/' . Auth::user()->profile->avatar) : asset('images/default-avatar.png') }}" alt="プロフィール画像"  class="profile__image">
+
         <h2>{{ Auth::user()->name }}</h2>
         <a class="profile__image__button" href="/mypage/profile">プロフィールを編集</a>
     </div>
 </div>
 <div class="main__tab">
     <div class="main__tab__inner">
-        <a class="main__tab--listing" href="/mypage">出品した商品</a>
-        <a class="main__tab--purchase" href="/mypage">購入した商品</a>
+        <a href="{{ route('mypage.index', ['view' => 'sell']) }}" class="{{ request()->query('view') !== 'buy' ? 'active-tab' : '' }}">出品した商品</a>
+        <a href="{{ route('mypage.index', ['view' => 'buy']) }}" class="{{ request()->query('view') === 'buy' ? 'active-tab' : '' }}">購入した商品</a>
     </div>
 </div>
 <div class="main__product">

@@ -19,7 +19,12 @@
             <div class="header-utilities">
                 <a href="/"> <img src="{{ asset('storage/logo/Logo.png') }}" alt="ロゴ画像"></a>
                 @if (Auth::check())
-                <input type="text" placeholder="なにをお探しですか？">
+                <form action="{{ route('item.index') }}" method="GET" class="header__search-form">
+                    <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="なにをお探しですか？">
+                    @if(request()->query('data'))
+                        <input type="hidden" name="data" value="{{ request()->query('data') }}">
+                    @endif
+                </form>
                 <nav>
                     <ul class="header-nav">
                         <li class="header-nav__item">

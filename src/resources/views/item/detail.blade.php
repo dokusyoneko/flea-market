@@ -59,7 +59,10 @@
     <h4 class="main__right__subtitle--subtitle">商品へのコメント</h4>
     <form action="{{ route('products.comment', $product->id) }}" method="POST">
     @csrf
-        <textarea class="main__right__comment--area" name="content" required></textarea>
+        @error('comment')
+        <div class="form__error">{{ $message }}</div>
+        @enderror
+        <textarea class="main__right__comment--area" name="comment" >{{ old('comment') }}</textarea>
         <button type="submit" class="main__right__comment--button">コメントを送信する</button>
     </form>
 </div>

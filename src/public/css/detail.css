@@ -170,3 +170,9 @@ main {
     height: 200px;
     margin-bottom: 40px;
 }
+
+.form__error {
+    height: 20px;
+    color: #ff0000;
+    text-align: left;
+}

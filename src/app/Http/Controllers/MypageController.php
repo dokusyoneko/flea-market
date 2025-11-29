@@ -6,13 +6,22 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserProfile;
+use App\Models\Purchase;
 
 class MypageController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::where('user_id', Auth::id())->get();
-        return view('mypage.mypage', compact('products'));
+        $user = Auth::user();
+        $view = $request->query('view');
+
+        if ($view === 'buy') {
+            $productIds = Purchase::where('user_id', $user->id)->pluck('product_id');
+            $products = Product::whereIn('id', $productIds)->get();
+        } else {
+            $products = Product::where('user_id', $user->id)->get();
+        }
+        return view('mypage.mypage', compact('products', 'view'));
     }
 
     public function edit()
@@ -28,18 +37,19 @@ class MypageController extends Controller
         $profile = $user->profile ?? new UserProfile(['user_id' => $user->id]);
 
         if ($request->hasFile('avatar')) {
-        $path = $request->file('avatar')->store('avatars', 'public');
-        $user->profile->avatar = $path;
+            $path = $request->file('avatar')->store('avatars', 'public');
+            $profile->avatar = $path;
         }
 
-        $user->profile->username = $request->username;
-        $user->profile->postal_code = $request->postal_code;
-        $user->profile->address = $request->address;
-        $user->profile->building_name = $request->building_name;
+        $profile->username = $request->username;
+        $profile->postal_code = $request->postal_code;
+        $profile->address = $request->address;
+        $profile->building_name = $request->building_name;
 
-        $user->profile->save();
+        $profile->save();
 
-    return redirect('/')->with('success', 'プロフィールを更新しました');
-}
+        return redirect('/mypage');
+    }
+
 
 }

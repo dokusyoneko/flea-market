@@ -7,8 +7,8 @@
 @section('content')
 <div class="main__tab">
     <div class="main__tab__inner">
-        <a href="/" class="{{ request()->query('data') === 'mypage' ? 'main__tab--black' : 'main__tab--favorite' }}">おすすめ</a>
-        <a href="/?data=mypage"class="{{ request()->query('data') === 'mypage' ? 'main__tab--favorite' : 'main__tab--mypage' }}">マイリスト</a>
+        <a href="/?keyword={{ request('keyword') }}" class="{{ request()->query('data') === 'mypage' ? 'main__tab--black' : 'main__tab--favorite' }}">おすすめ</a>
+        <a href="/?data=mypage&keyword={{ request('keyword') }}" class="{{ request()->query('data') === 'mypage' ? 'main__tab--favorite' : 'main__tab--mypage' }}">マイリスト</a>
     </div>
 </div>
 <div class="main__product">

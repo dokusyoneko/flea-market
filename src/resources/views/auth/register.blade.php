@@ -17,10 +17,10 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="name" value="{{ old('name') }}" />
+                    <input type="text" name="username" value="{{ old('username') }}" />
                 </div>
                 <div class="form__error">
-                    @error('name')
+                    @error('username')
                     {{ $message }}
                     @enderror
                 </div>
@@ -51,7 +51,9 @@
                 </div>
                 <div class="form__error">
                     @error('password')
-                    {{ $message }}
+                        @if($message !== 'パスワードと一致しません')
+                            {{ $message }}
+                        @endif
                     @enderror
                 </div>
             </div>
@@ -63,6 +65,13 @@
             <div class="form__group-content">
                 <div class="form__input--text">
                     <input type="password" name="password_confirmation" />
+                </div>
+                <div class="form__error">
+                    @error('password')
+                        @if($message === 'パスワードと一致しません')
+                            {{ $message }}
+                        @endif
+                    @enderror
                 </div>
             </div>
         </div>

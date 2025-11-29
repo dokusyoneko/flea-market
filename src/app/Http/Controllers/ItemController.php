@@ -12,20 +12,28 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->query('data') === 'mypage') {
-            $user = Auth::user();
+        $user = Auth::user();
+        $view = $request->query('data');
+        $keyword = $request->input('keyword');
 
+        if ($view === 'mypage') {
             if (!$user) {
                 return redirect()->route('login');
             }
 
             $likedProductIds = Like::where('user_id', $user->id)->pluck('product_id');
-            $products = Product::whereIn('id', $likedProductIds)->get();
+            $products = Product::search($keyword)
+                ->whereIn('id', $likedProductIds)
+                ->get();
         } else {
-            $products = Product::all();
+            $products = Product::search($keyword)
+                ->where('user_id', '!=', $user?->id)
+                ->get();
         }
-        return view('item.index', compact('products'));
+
+        return view('item.index', compact('products', 'keyword', 'view'));
     }
+
 
 
     public function show($item_id)
@@ -46,18 +54,7 @@ class ItemController extends Controller
     }
 
     public function store(Request $request)
-{
-    $validated = $request->validate([
-        'name' => 'required|string|max:255',
-        'brand' => 'nullable|string|max:255',
-        'description' => 'nullable|string|max:2000',
-        'price' => 'required|regex:/^[0-9]+$/',
-        'condition' => 'required|string|max:50',
-        'categories' => 'required|array|min:1',
-        'categories.*' => 'exists:categories,id',
-        'image_path' => 'nullable|image|max:2048',
-    ]);
-
+    {
     $price = preg_replace('/[^0-9]/', '', $request->price);
 
     $imagePath = null;
@@ -66,19 +63,22 @@ class ItemController extends Controller
     }
 
     $product = Product::create([
-        'user_id' => auth()->id(),
-        'name' => $validated['name'],
-        'brand' => $validated['brand'] ?? '',
-        'description' => $validated['description'] ?? '',
-        'price' => $price,
-        'condition' => $validated['condition'],
-        'is_sold' => false,
+        'user_id'    => auth()->id(),
+        'name'       => $request->name,
+        'brand'      => $request->brand ?? '',
+        'description'=> $request->description ?? '',
+        'price'      => $price,
+        'condition'  => $request->condition,
+        'is_sold'    => false,
         'image_path' => $imagePath ?? '',
     ]);
 
-    $product->categories()->attach($validated['categories']);
+    if ($request->has('categories')) {
+        $product->categories()->attach($request->categories);
+    }
 
-    return redirect()->route('mypage.index')->with('success', '商品を出品しました');
-}
+    return redirect()->route('mypage.index');
+    }
+
 }
 
