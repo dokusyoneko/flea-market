@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\UserProfile;
+use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
@@ -42,8 +43,30 @@ class PurchaseController extends Controller
 
         $profile->save();
 
-        return redirect()->route('purchase.show', ['item_id' => session('current_item_id')])
-            ->with('success', '住所を更新しました');
+        return redirect()->route('purchase.show', ['item_id' => session('current_item_id')]);
+
     }
+
+    public function store(Request $request, $item_id)
+    {
+        $user = Auth::user();
+        $profile = $user->profile;
+
+        Purchase::create([
+            'user_id'       => $user->id,
+            'product_id'    => $item_id,
+            'postal_code'   => $profile->postal_code,
+            'address'       => $profile->address,
+            'building_name' => $profile->building_name,
+            'payment_method'=> $request->payment_method,
+        ]);
+
+        $product = Product::findOrFail($item_id);
+        $product->is_sold = true;
+        $product->save();
+
+        return redirect()->route('item.index');
+    }
+
 }
 

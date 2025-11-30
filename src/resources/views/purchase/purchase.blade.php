@@ -51,7 +51,11 @@
                 <td id="selected-method">コンビニ支払い</td>
             </tr>
         </table>
-        <a href="" class="purchase__button">購入する</a>
+        <form action="{{ route('purchase.store', ['item_id' => $product->id]) }}" method="POST">
+        @csrf
+            <input type="hidden" name="payment_method" id="hidden-payment-method">
+            <button type="submit" class="purchase__button">購入する</button>
+        </form>
     </div>
 </div>
 
@@ -59,6 +63,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const select = document.getElementById('payment-method');
     const display = document.getElementById('selected-method');
+    const hiddenInput = document.getElementById('hidden-payment-method');
 
     const labels = {
         convenience_store: 'コンビニ支払い',
@@ -68,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     select.addEventListener('change', function () {
         const code = select.value;
         display.textContent = labels[code] || '選択してください';
+        hiddenInput.value = code;
     });
 });
 </script>

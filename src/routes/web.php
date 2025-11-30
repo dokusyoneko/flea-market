@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase/address', [PurchaseController::class, 'editAddress'])->name('address.edit');
     Route::post('/purchase/address', [PurchaseController::class, 'updateAddress'])->name('address.update');
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
 });
 
 Route::middleware('auth')->group(function () {

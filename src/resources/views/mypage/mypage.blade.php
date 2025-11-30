@@ -28,6 +28,9 @@
                     <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
                     <h3>{{ $product->name }}</h3>
                 </a>
+                @if($product->is_sold)
+                    <span class="sold-label">SOLD</span>
+                @endif
             </li>
             @endforeach
         </ul>
