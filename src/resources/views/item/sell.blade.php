@@ -20,6 +20,9 @@
                 <input class="custom-file-input" type="file" id="image_path" name="image_path" accept="image/*" onchange="previewImage(event)">
                 <img class="image-preview hidden" alt="選択された画像">
             </div>
+            @error('image_path')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
         <div class="product__detail">
             <h2>商品の詳細</h2>
@@ -31,15 +34,22 @@
                     <span>{{ $category->name }}</span>
                 </label>
             @endforeach
+                <input type="hidden" name="category" id="selected-category">
             </div>
+            @error('categories')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
             <h3>商品の状態</h3>
-            <select class="product_condition" name="condition" required>
+            <select class="product_condition" name="condition">
                 <option value="" disabled selected>選択してください</option>
                 <option>良好</option>
                 <option>目立った傷や汚れなし</option>
                 <option>やや傷や汚れあり</option>
                 <option>状態が悪い</option>
             </select>
+            @error('condition')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
         <div class="product__description">
             <h2>商品名と説明</h2>
@@ -50,9 +60,6 @@
             @enderror
             <h3>ブランド名</h3>
             <input type="text" name="brand">
-            @error('brand')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
             <h3>商品の説明</h3>
             <textarea name="description" id=""></textarea>
             @error('description')

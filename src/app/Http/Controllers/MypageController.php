@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserProfile;
 use App\Models\Purchase;
+use App\Http\Requests\ProfileRequest;
 
 class MypageController extends Controller
 {
@@ -30,7 +31,7 @@ class MypageController extends Controller
         return view('mypage.profile', compact('profile'));
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
         $user = auth()->user();
 

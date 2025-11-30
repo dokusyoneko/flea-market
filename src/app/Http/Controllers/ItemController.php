@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ExhibitionRequest;
 
 
 class ItemController extends Controller
@@ -53,25 +54,18 @@ class ItemController extends Controller
         return view('item.sell', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
-    $price = preg_replace('/[^0-9]/', '', $request->price);
+    $data = $request->validated();
+    $data['user_id'] = auth()->id();
+    $data['price']   = preg_replace('/[^0-9]/', '', $data['price']);
+    $data['is_sold'] = false;
 
-    $imagePath = null;
     if ($request->hasFile('image_path')) {
-        $imagePath = $request->file('image_path')->store('products', 'public');
-    }
+    $data['image_path'] = $request->file('image_path')->store('products', 'public');
+}
 
-    $product = Product::create([
-        'user_id'    => auth()->id(),
-        'name'       => $request->name,
-        'brand'      => $request->brand ?? '',
-        'description'=> $request->description ?? '',
-        'price'      => $price,
-        'condition'  => $request->condition,
-        'is_sold'    => false,
-        'image_path' => $imagePath ?? '',
-    ]);
+    $product = Product::create($data);
 
     if ($request->has('categories')) {
         $product->categories()->attach($request->categories);

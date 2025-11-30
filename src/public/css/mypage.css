@@ -126,3 +126,10 @@
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
+
+.sold-label {
+    font-weight: bold;
+    color: red;
+    border: solid 1px red;
+    border-radius: 3px;
+}

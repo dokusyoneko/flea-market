@@ -114,3 +114,9 @@
     margin-top: 20px;
     font-weight: bold;
 }
+
+.form__error {
+    height: 20px;
+    color: #ff0000;
+    text-align: left;
+}

@@ -24,6 +24,9 @@
                     <option value="convenience_store">コンビニ払い</option>
                     <option value="credit_card">カード支払い</option>
                 </select>
+                @error('payment_method')
+                    <div class="form__error">{{ $message }}</div>
+                @enderror
             </div>
         </div>
         <div class="left__address">
@@ -33,10 +36,12 @@
                     <a href="{{ route('address.edit') }}">変更する</a>
                 </div>
                 <div class="address__inner__address">
-                    <p>〒{{ substr($user_profile->postal_code, 0, 3) . '-' . substr($user_profile->postal_code, 3) }}</p>
-
+                    <p>〒{{ $user_profile->postal_code }}</p>
                     <p>{{ $user_profile->address }}{{ $user_profile->building_name }}</p>
                 </div>
+                @error('address_id')
+                    <div class="form__error">{{ $message }}</div>
+                @enderror
             </div>
         </div>
     </div>
@@ -54,6 +59,7 @@
         <form action="{{ route('purchase.store', ['item_id' => $product->id]) }}" method="POST">
         @csrf
             <input type="hidden" name="payment_method" id="hidden-payment-method">
+            <input type="hidden" name="address_id" value="{{ $user_profile->id }}">
             <button type="submit" class="purchase__button">購入する</button>
         </form>
     </div>
