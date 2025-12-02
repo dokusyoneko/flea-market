@@ -8,6 +8,8 @@ use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +36,11 @@ Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show'
 
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage.index');
-    Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('mypage.edit');
     Route::post('/mypage/profile', [MypageController::class, 'update'])->name('mypage.update');
+});
+
+Route::middleware(['auth', 'verified.custom'])->group(function () {
+    Route::get('/mypage/profile', [MypageController::class, 'edit'])->name('mypage.edit');
 });
 
 Route::middleware('auth')->group(function () {
@@ -59,3 +64,21 @@ Route::middleware('auth')->group(function () {
     Route::post('/products/{product}/comments', [CommentController::class, 'store'])
     ->name('products.comment');
 });
+
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect()->route('mypage.edit');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+Route::get('/email/verify/guide', function () {
+    return view('auth.verify-guide');
+})->middleware('auth')->name('verification.notice.custom');
+
