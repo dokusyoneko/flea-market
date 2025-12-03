@@ -14,15 +14,17 @@ class MypageController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $view = $request->query('view');
+        $page = $request->query('page');
 
-        if ($view === 'buy') {
+        if ($page === 'buy') {
             $productIds = Purchase::where('user_id', $user->id)->pluck('product_id');
             $products = Product::whereIn('id', $productIds)->get();
         } else {
             $products = Product::where('user_id', $user->id)->get();
+            $page = 'sell';
         }
-        return view('mypage.mypage', compact('products', 'view'));
+
+        return view('mypage.mypage', compact('products', 'page'));
     }
 
     public function edit()

@@ -20,13 +20,14 @@ class PurchaseController extends Controller
         return view('purchase.purchase', compact('product','user_profile'));
     }
 
-    public function editAddress()
+    public function editAddress($item_id)
     {
+        $product = Product::findOrFail($item_id);
         $user_profile = Auth::user()->profile;
-        return view('purchase.address', compact('user_profile'));
+        return view('purchase.address', compact('product', 'user_profile'));
     }
 
-    public function updateAddress(AddressRequest  $request)
+    public function updateAddress(AddressRequest  $request, $item_id)
     {
         $profile = Auth::user()->profile;
 
@@ -36,10 +37,9 @@ class PurchaseController extends Controller
         }
 
         $profile->fill($request->validated());
-
         $profile->save();
 
-        return redirect()->route('purchase.show', ['item_id' => session('current_item_id')]);
+        return redirect()->route('purchase.show', ['item_id' => $item_id]);
 
     }
 

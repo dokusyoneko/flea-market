@@ -28,10 +28,8 @@ Route::get('/register', [RegisterController::class, 'show'])->name('register.sho
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 
-
 Route::get('/', [ItemController::class, 'index'])->name('item.index');
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
-
 
 
 Route::middleware('auth')->group(function () {
@@ -49,8 +47,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/purchase/address', [PurchaseController::class, 'editAddress'])->name('address.edit');
-    Route::post('/purchase/address', [PurchaseController::class, 'updateAddress'])->name('address.update');
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('address.edit');
+    Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress'])->name('address.update');
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
 });

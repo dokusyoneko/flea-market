@@ -16,6 +16,7 @@ class AddressRequest extends FormRequest
         return [
             'postal_code'   => ['required', 'size:8'],
             'address'       => ['required', 'string', 'max:255'],
+            'building_name' => ['nullable'],
         ];
     }
 

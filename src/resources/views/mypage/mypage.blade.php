@@ -15,8 +15,8 @@
 </div>
 <div class="main__tab">
     <div class="main__tab__inner">
-        <a href="{{ route('mypage.index', ['view' => 'sell']) }}" class="{{ request()->query('view') !== 'buy' ? 'active-tab' : '' }}">出品した商品</a>
-        <a href="{{ route('mypage.index', ['view' => 'buy']) }}" class="{{ request()->query('view') === 'buy' ? 'active-tab' : '' }}">購入した商品</a>
+        <a href="{{ route('mypage.index', ['page' => 'sell']) }}" class="{{ request()->query('page') !== 'sell' ? 'active-tab' : '' }}">出品した商品</a>
+        <a href="{{ route('mypage.index', ['page' => 'buy']) }}" class="{{ request()->query('page') === 'buy' ? 'active-tab' : '' }}">購入した商品</a>
     </div>
 </div>
 <div class="main__product">

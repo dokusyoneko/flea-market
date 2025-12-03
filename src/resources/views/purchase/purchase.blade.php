@@ -33,7 +33,7 @@
             <div class="left__address__inner">
                 <div class="address__inner__shipping">
                     <h3>配送先</h3>
-                    <a href="{{ route('address.edit') }}">変更する</a>
+                    <a href="{{ route('address.edit', ['item_id' => $product->id]) }}">変更する</a>
                 </div>
                 <div class="address__inner__address">
                     <p>〒{{ $user_profile->postal_code }}</p>

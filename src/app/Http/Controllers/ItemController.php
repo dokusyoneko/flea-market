@@ -12,28 +12,44 @@ use App\Http\Requests\ExhibitionRequest;
 class ItemController extends Controller
 {
     public function index(Request $request)
-    {
-        $user = Auth::user();
-        $view = $request->query('data');
-        $keyword = $request->input('keyword');
+{
+    $user = Auth::user();
+    $tab = $request->query('tab');
+    $keyword = $request->input('keyword');
 
-        if ($view === 'mypage') {
-            if (!$user) {
-                return redirect()->route('login');
-            }
-
-            $likedProductIds = Like::where('user_id', $user->id)->pluck('product_id');
-            $products = Product::search($keyword)
-                ->whereIn('id', $likedProductIds)
-                ->get();
-        } else {
-            $products = Product::search($keyword)
-                ->where('user_id', '!=', $user?->id)
-                ->get();
+    if ($tab === 'mylist') {
+        if (!$user) {
+            return redirect()->route('login');
         }
 
-        return view('item.index', compact('products', 'keyword', 'view'));
+        $products = $user->likes()
+            ->with('product')
+            ->get()
+            ->pluck('product');
+
+        if ($keyword) {
+            $products = $products->filter(function ($product) use ($keyword) {
+                return str_contains($product->name, $keyword);
+            });
+        }
+    } else {
+        $query = Product::query();
+
+        if ($user) {
+            $query->where('user_id', '!=', $user->id);
+        }
+
+        if ($keyword) {
+            $query->where('name', 'like', "%{$keyword}%");
+        }
+
+        $products = $query->get();
     }
+
+    return view('item.index', compact('products', 'keyword', 'tab'));
+}
+
+
 
 
 

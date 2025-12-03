@@ -9,7 +9,7 @@
     <div class="register-form__heading">
         <h2>住所の変更</h2>
     </div>
-    <form action="{{ route('address.update') }}" method="POST">
+    <form action="{{ route('address.update', ['item_id' => $product->id]) }}" method="POST">
         @csrf
         <div class="form__group">
             <div class="form__group-title">
