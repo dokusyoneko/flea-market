@@ -18,11 +18,11 @@
     <div class="main__right__price">¥{{ number_format($product->price) }}(税込)</div>
     <div class="main__right__icons">
         <div class="icon-block">
-            <i id="like-icon-{{ $product->id }}" class="fa-regular fa-heart {{ $product->likes->contains('user_id', auth()->id()) ? 'text-red' : 'text-gray' }}"onclick="toggleLike({{ $product->id }})"></i>
+            <img id="like-icon-{{ $product->id }}" src="{{ asset($product->likes->contains('user_id', auth()->id()) ? 'images/heart-active.png' : 'images/	heart-default.png') }}" alt="いいね" class="icon-heart" data-product-id="{{ $product->id }}"onclick="toggleLike({{ $product->id }})"/>
             <div class="icon-count" id="likes-count-{{ $product->id }}">{{ $product->likes->count() }}</div>
         </div>
         <div class="icon-block">
-            <i class="fa-regular fa-comment"></i>
+            <img src="{{ asset('images/comment-icon.png') }}" alt="コメント" class="icon-comment" />
             <div class="icon-count" id="comments-count-{{ $product->id }}">{{ $product->comments->count() }}</div>
         </div>
     </div>
@@ -68,22 +68,22 @@
 </div>
 
 <script>
-function toggleLike(productId) {
-    fetch(`/products/${productId}/like`, {
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-            'Accept': 'application/json'
-        }
-    })
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById(`likes-count-${productId}`).innerText = data.likes_count;
-        const icon = document.getElementById(`like-icon-${productId}`);
-        icon.classList.toggle('text-red', data.liked);
-        icon.classList.toggle('text-gray', !data.liked);
-    });
-}
+    function toggleLike(productId) {
+        fetch(`/products/${productId}/like`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Accept': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById(`likes-count-${productId}`).innerText = data.likes_count; const icon = document.getElementById(`like-icon-${productId}`);
+            icon.src = data.liked
+                ? '/images/heart-active.png'
+                : '/images/heart-default.png';
+        });
+    }
 </script>
 
 @endsection

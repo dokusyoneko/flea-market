@@ -13,6 +13,8 @@
     align-items: center;
     justify-content: space-between;
     height: 40px;
+    width: 95%;
+    margin: 0 auto;
 }
 
 .header-utilities img{
@@ -44,16 +46,25 @@
 .header-nav {
     display: flex;
     align-items: center;
+    width: 100%;
     justify-content: space-between;
+
+}
+
+.header-nav__form {
+    display: inline;
 }
 
 .header-nav__button {
-    border: none;
     background: transparent;
+    border: none;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
-    width: 100px;
+    text-decoration: none;
+    padding: 0;
+    width: auto;
+    display: inline-block;
 }
 
 .header-nav__link {

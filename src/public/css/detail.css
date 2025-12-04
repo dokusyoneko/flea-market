@@ -36,13 +36,6 @@ main {
     font-size: 30px;
 }
 
-.fa-heart,
-.fa-comment {
-    font-size: 24px;
-    margin: 20px;
-    vertical-align: middle;
-}
-
 .text-red {
     color: red;
 }
@@ -61,9 +54,11 @@ main {
 
 }
 
-.icon-block i {
-    font-size: 25px;
-    margin-bottom: 2px;
+.icon-heart,
+.icon-comment{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
 }
 
 .icon-count {
