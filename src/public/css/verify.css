@@ -1,0 +1,47 @@
+.verify__content{
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.verify__content__inner{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 150px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.verify__check{
+    width: 25%;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 50px;
+    border: solid 1px black;
+    background-color: rgb(213, 212, 212);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.verify__check:hover {
+    background-color: #d0d0d0;
+}
+
+.verify__check__inner{
+    text-decoration: none;
+    color: black;
+}
+
+.mail__resend__button {
+    margin-top: 30px;
+    font-size: 18px;
+    color: blue;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
