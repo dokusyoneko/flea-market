@@ -9,6 +9,8 @@ use App\Models\Purchase;
 use App\Http\Requests\PurchaseRequest;
 use App\Http\Requests\AddressRequest;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 
 class PurchaseController extends Controller
 {
@@ -55,6 +57,53 @@ class PurchaseController extends Controller
             'address'       => $profile->address,
             'building_name' => $profile->building_name,
             'payment_method'=> $request->payment_method,
+        ]);
+
+        $product = Product::findOrFail($item_id);
+        $product->is_sold = true;
+        $product->save();
+
+        return redirect()->route('item.index');
+    }
+
+    public function checkout(Request $request, $item_id)
+    {
+        $product = Product::findOrFail($item_id);
+
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $session = Session::create([
+            'payment_method_types' => [$request->payment_method],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'product_data' => [
+                        'name' => $product->name,
+                    ],
+                    'unit_amount' => $product->price,
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => route('purchase.success', ['item_id' => $product->id]),
+            'cancel_url'  => route('item.index'),
+        ]);
+
+        return redirect($session->url);
+    }
+
+    public function success($item_id)
+    {
+        $user = Auth::user();
+        $profile = $user->profile;
+
+        Purchase::create([
+            'user_id'       => $user->id,
+            'product_id'    => $item_id,
+            'postal_code'   => $profile->postal_code,
+            'address'       => $profile->address,
+            'building_name' => $profile->building_name,
+            'payment_method'=> 'stripe',
         ]);
 
         $product = Product::findOrFail($item_id);

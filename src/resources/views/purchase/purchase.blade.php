@@ -21,8 +21,8 @@
                 <h3>支払い方法</h3>
                 <select class="payment_method" name="payment_method" id="payment-method" required>
                     <option value="" disabled selected>選択してください</option>
-                    <option value="convenience_store">コンビニ払い</option>
-                    <option value="credit_card">カード支払い</option>
+                    <option value="konbini">コンビニ払い</option>
+                    <option value="card">カード支払い</option>
                 </select>
                 @error('payment_method')
                     <div class="form__error">{{ $message }}</div>
@@ -56,7 +56,7 @@
                 <td id="selected-method">コンビニ支払い</td>
             </tr>
         </table>
-        <form action="{{ route('purchase.store', ['item_id' => $product->id]) }}" method="POST">
+        <form action="{{ route('purchase.checkout', ['item_id' => $product->id]) }}" method="POST">
         @csrf
             <input type="hidden" name="payment_method" id="hidden-payment-method">
             <input type="hidden" name="address_id" value="{{ $user_profile->id }}">
@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const hiddenInput = document.getElementById('hidden-payment-method');
 
     const labels = {
-        convenience_store: 'コンビニ支払い',
-        credit_card: 'カード支払い',
+        konbini: 'コンビニ支払い',
+        card: 'カード支払い',
     };
 
     select.addEventListener('change', function () {
