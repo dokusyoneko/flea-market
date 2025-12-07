@@ -11,3 +11,5 @@ RUN curl -sS https://getcomposer.org/installer | php \
   && composer self-update
 
 WORKDIR /var/www
+
+COPY www.conf /usr/local/etc/php-fpm.d/www.conf
