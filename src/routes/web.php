@@ -55,10 +55,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase/{item_id}/success', [PurchaseController::class, 'success'])->name('purchase.success');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::post('/products/{id}/like', [LikeController::class, 'toggle'])
+
+Route::post('/products/{id}/like', [LikeController::class, 'toggle'])
     ->name('products.like');
-});
 
 Route::middleware('auth')->group(function () {
     Route::post('/products/{product}/comments', [CommentController::class, 'store'])

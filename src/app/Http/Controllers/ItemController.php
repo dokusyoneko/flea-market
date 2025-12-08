@@ -19,13 +19,13 @@ class ItemController extends Controller
 
     if ($tab === 'mylist') {
         if (!$user) {
-            return redirect()->route('login');
-        }
-
-        $products = $user->likes()
+            $products = collect();
+        } else {
+            $products = $user->likes()
             ->with('product')
             ->get()
             ->pluck('product');
+        }
 
         if ($keyword) {
             $products = $products->filter(function ($product) use ($keyword) {

@@ -11,6 +11,11 @@ class LikeController extends Controller
     public function toggle($product_id)
     {
         $user = auth()->user();
+        if (!$user) {
+            return response()->json([
+                'redirect' => route('login')
+            ], 401);
+        }
         $product = Product::findOrFail($product_id);
 
         $like = Like::where('user_id', $user->id)

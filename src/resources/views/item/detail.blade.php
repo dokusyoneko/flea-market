@@ -22,7 +22,7 @@
     <div class="main__right__price">¥{{ number_format($product->price) }}(税込)</div>
     <div class="main__right__icons">
         <div class="icon-block">
-            <img id="like-icon-{{ $product->id }}" src="{{ asset($product->likes->contains('user_id', auth()->id()) ? 'images/heart-active.png' : 'images/	heart-default.png') }}" alt="いいね" class="icon-heart" data-product-id="{{ $product->id }}"onclick="toggleLike({{ $product->id }})"/>
+            <img id="like-icon-{{ $product->id }}" src="{{ asset($product->likes->contains('user_id', auth()->id()) ? 'images/heart-active.png' : 'images/heart-default.png') }}" alt="いいね" class="icon-heart" data-product-id="{{ $product->id }}"onclick="toggleLike({{ $product->id }})"/>
             <div class="icon-count" id="likes-count-{{ $product->id }}">{{ $product->likes->count() }}</div>
         </div>
         <div class="icon-block">
@@ -80,12 +80,24 @@
                 'Accept': 'application/json'
             }
         })
-        .then(res => res.json())
+        .then(res => {
+            if (res.status === 401) {
+                return res.json().then(data => {
+                    window.location.href = data.redirect;
+                    throw new Error('Unauthorized'); //
+                });
+            }
+            return res.json();
+        })
         .then(data => {
-            document.getElementById(`likes-count-${productId}`).innerText = data.likes_count; const icon = document.getElementById(`like-icon-${productId}`);
+            document.getElementById(`likes-count-${productId}`).innerText = data.likes_count;
+            const icon = document.getElementById(`like-icon-${productId}`);
             icon.src = data.liked
                 ? '/images/heart-active.png'
                 : '/images/heart-default.png';
+        })
+        .catch(err => {
+            console.error(err);
         });
     }
 </script>

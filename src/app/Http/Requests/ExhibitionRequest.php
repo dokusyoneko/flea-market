@@ -14,11 +14,10 @@ class ExhibitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'        => ['required', 'string', 'max:100'],
+            'name'        => ['required'],
             'description' => ['required', 'string', 'max:255'],
             'image_path'  => ['required', 'image', 'mimes:jpeg,png'],
-            'categories'   => ['required', 'array'],
-            'categories.*' => ['exists:categories,id'],
+            'categories'   => ['required'],
             'condition'   => ['required'],
             'price'       => ['required', 'integer', 'min:0'],
         ];
@@ -34,7 +33,6 @@ class ExhibitionRequest extends FormRequest
             'image_path.image'     => '商品画像は画像ファイルを選択してください。',
             'image_path.mimes'     => '商品画像はjpegまたはpng形式でアップロードしてください。',
             'categories.required'  => '商品のカテゴリーを選択してください。',
-            'categories.*.exists'  => '選択したカテゴリーが存在しません。',
             'condition.required'   => '商品の状態を選択してください。',
             'price.required'       => '商品価格を入力してください。',
             'price.integer'        => '商品価格は数値で入力してください。',
