@@ -9,7 +9,11 @@
     <div class="main__left">
         <div class="left__item">
             <div class="left__item__img">
-                <img class="left__item__img__--inner" src="{{ asset('storage/' . $product->image_path) }}" alt="商品画像">
+                @if(Str::startsWith($product->image_path, 'http'))
+                        <img class="left__item__img__--inner" src="{{ $product->image_path }}" alt="{{ $product->name }}">
+                    @else
+                        <img class="left__item__img__--inner" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
+                    @endif
             </div>
             <div class="left__item__content">
                 <h2>{{ $product->name }}</h2>
