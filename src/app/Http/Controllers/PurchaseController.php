@@ -73,7 +73,7 @@ class PurchaseController extends Controller
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $session = Session::create([
-            'payment_method_types' => [$request->payment_method],
+            'payment_method_types' => ['card', 'konbini'],
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'jpy',

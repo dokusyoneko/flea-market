@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
             'price' => 15000,
             'condition' => '良好',
             'is_sold' => false,
-            'image_path' => 'products/rolex.jpg',
+            'image_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
         ]);
 
         Product::create([
@@ -28,7 +28,7 @@ class ProductSeeder extends Seeder
             'price' => 5000,
             'condition' => '目立った傷や汚れなし',
             'is_sold' => false,
-            'image_path' => 'products/hdd.jpg',
+            'image_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
         ]);
 
         Product::create([
@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
             'price' => 300,
             'condition' => 'やや傷や汚れあり',
             'is_sold' => false,
-            'image_path' => 'products/onion.jpg',
+            'image_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
         ]);
 
         Product::create([
@@ -50,7 +50,7 @@ class ProductSeeder extends Seeder
             'price' => 4000,
             'condition' => '状態が悪い',
             'is_sold' => false,
-            'image_path' => 'products/shoes.jpg',
+            'image_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg',
         ]);
 
         Product::create([
@@ -61,7 +61,7 @@ class ProductSeeder extends Seeder
             'price' => 45000,
             'condition' => '良好',
             'is_sold' => false,
-            'image_path' => 'products/laptop.jpg',
+            'image_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg',
         ]);
 
         Product::create([
@@ -72,7 +72,7 @@ class ProductSeeder extends Seeder
             'price' => 8000,
             'condition' => '目立った傷や汚れなし',
             'is_sold' => false,
-            'image_path' => 'products/mic.jpg',
+            'image_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg',
         ]);
 
         Product::create([
@@ -83,7 +83,7 @@ class ProductSeeder extends Seeder
             'price' => 3500,
             'condition' => 'やや傷や汚れあり',
             'is_sold' => false,
-            'image_path' => 'products/bag.jpg',
+            'image_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg',
         ]);
 
         Product::create([
@@ -94,7 +94,7 @@ class ProductSeeder extends Seeder
             'price' => 500,
             'condition' => '状態が悪い',
             'is_sold' => false,
-            'image_path' => 'products/tumbler.jpg',
+            'image_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
         ]);
 
         Product::create([
@@ -105,7 +105,7 @@ class ProductSeeder extends Seeder
             'price' => 4000,
             'condition' => '良好',
             'is_sold' => false,
-            'image_path' => 'products/coffeemill.jpg',
+            'image_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
         ]);
 
         Product::create([
@@ -116,7 +116,7 @@ class ProductSeeder extends Seeder
             'price' => 2500,
             'condition' => '目立った傷や汚れなし',
             'is_sold' => false,
-            'image_path' => 'products/makeup.jpg',
+            'image_path' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg',
         ]);
     }
 }

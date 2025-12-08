@@ -7,7 +7,11 @@
 @section('content')
 <div class="main__left">
     @if($product->image_path)
-        <img class="main__left__img" src="{{ asset('storage/' . $product->image_path) }}" alt="商品画像">
+        @if(Str::startsWith($product->image_path, 'http'))
+            <img class="main__left__img" src="{{ $product->image_path }}" alt="商品画像">
+        @else
+            <img class="main__left__img" src="{{ asset('storage/' . $product->image_path) }}" alt="商品画像">
+        @endif
     @else
         <p>画像は登録されていません</p>
     @endif

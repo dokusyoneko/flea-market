@@ -17,7 +17,11 @@
             @foreach($products as $product)
             <li class="main__product--li">
                 <a href="{{ route('item.show', ['item_id' => $product->id]) }}">
-                    <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
+                    @if(Str::startsWith($product->image_path, 'http'))
+                        <img src="{{ $product->image_path }}" alt="{{ $product->name }}">
+                    @else
+                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}">
+                    @endif
                     <h3>{{ $product->name }}</h3>
                 </a>
                 @if($product->is_sold)
