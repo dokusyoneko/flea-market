@@ -51,7 +51,7 @@ class MypageController extends Controller
 
         $profile->save();
 
-        return redirect('/mypage');
+        return redirect()->route('item.index', ['tab' => 'mylist']);
     }
 
 

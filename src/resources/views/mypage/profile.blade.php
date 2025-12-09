@@ -13,10 +13,9 @@
         @csrf
         <div class="form__group">
             <div class="form__profile__image">
-                <label for="avatar">
-                    <img id="avatar-preview" src="{{ $profile && $profile->avatar ? asset('storage/' . $profile->avatar) : asset('images/default-avatar.png') }}" alt="アバター画像" class="profile__image">
-                </label>
-                <input type="file" name="avatar" id="avatar" accept="image/*" class="profile__image__input">
+                <img id="avatar-preview" src="{{ $profile && $profile->avatar ? asset('storage/' . $profile->avatar) : asset('images/default-avatar.png') }}" alt="アバター画像" class="profile__image">
+                <label for="avatar" class="profile__image__button">画像を選択する</label>
+                <input type="file" name="avatar" id="avatar" accept="image/*" class="profile__image__input" hidden>
             </div>
             <div class="form__group-title">
                 <span class="form__label--item">ユーザー名</span>

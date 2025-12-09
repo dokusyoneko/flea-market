@@ -5,7 +5,12 @@ main {
     margin: 0 auto;
 }
 
-.main__left,
+.main__left {
+    width: 50%;
+    padding: 25px;
+    margin-top: 50px;
+}
+
 .main__right {
     width: 40%;
     padding: 20px;
@@ -14,8 +19,8 @@ main {
 
 .main__left__img {
     display: block;
-    width: 95%;
-    max-width: 400px;
+    width: 100%;
+    max-width: 550px;
     height: auto;
     object-fit: cover;
     margin: 0 auto;
@@ -103,7 +108,7 @@ main {
 .category__class,
 .condition__class{
     display: flex;
-    padding: 5px 0px 20px 0px;
+    padding: 10px 0px 10px 0px;
 }
 
 .main__right__subtitle--sub{
@@ -118,17 +123,24 @@ main {
 }
 
 .main__right__category{
-    background-color: gray;
-    color: white;
+    background-color: #dfdfdf;
     border-radius: 20px;
     height: 30px;
     margin: 5px;
     align-items: center;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main__right__condition{
     margin: 5px;
     align-items: center;
+}
+
+.main__right__subtitle--comment{
+    color: rgb(101, 101, 101);
 }
 
 .main__right__comment--img--name{
@@ -144,6 +156,13 @@ main {
 
 .main__right__user--comment{
     background-color: gainsboro;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .comment-avatar {
@@ -164,6 +183,7 @@ main {
     width: 100%;
     height: 200px;
     margin-bottom: 40px;
+    border-radius: 5px;
 }
 
 .form__error {

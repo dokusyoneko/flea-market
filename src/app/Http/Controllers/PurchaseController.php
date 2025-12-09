@@ -66,14 +66,18 @@ class PurchaseController extends Controller
         return redirect()->route('item.index');
     }
 
-    public function checkout(Request $request, $item_id)
+    public function checkout(PurchaseRequest $request, $item_id)
     {
+        $request->validate([
+        'payment_method' => 'required|in:konbini,card',
+        ]);
+
         $product = Product::findOrFail($item_id);
 
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $session = Session::create([
-            'payment_method_types' => ['card', 'konbini'],
+            'payment_method_types' =>  [$request->payment_method],
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'jpy',

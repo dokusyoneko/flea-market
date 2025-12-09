@@ -73,7 +73,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const select = document.getElementById('payment-method');
     const display = document.getElementById('selected-method');
-    const hiddenInput = document.getElementById('hidden-payment-method');
 
     const labels = {
         konbini: 'コンビニ支払い',
@@ -81,10 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     select.addEventListener('change', function () {
-        const code = select.value;
-        display.textContent = labels[code] || '選択してください';
-        hiddenInput.value = code;
-    });
+    const code = select.value;
+    display.textContent = labels[code] || '選択してください';
+    document.getElementById('hidden-payment-method').value = code;
+});
 });
 </script>
 @endsection

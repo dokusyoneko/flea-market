@@ -1,6 +1,6 @@
 
 .main__tab{
-    height: 100px;
+    height: 80px;
     border-bottom: solid 1px black;
     position: relative;
 }
@@ -13,8 +13,9 @@
     gap: 80px;
     position: absolute;
     bottom: 0;
-    left: 50%;
+    left: 53%;
     transform: translateX(-50%);
+    font-size: 18px;
 }
 
 .main__tab__inner a{
@@ -85,9 +86,31 @@
     transition: transform 0.3s ease;
 }
 
-.sold-label{
+.product-image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+}
+
+.product-image-wrapper img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+}
+
+.sold-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 0, 0, 0.85);
+    color: white;
+    padding: 6px 12px;
     font-weight: bold;
-    color: red;
-    border: solid 1px red;
-    border-radius: 3px;
+    font-size: 14px;
+    border-radius: 4px;
+    z-index: 10;
+    pointer-events: none;
 }

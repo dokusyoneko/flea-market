@@ -11,7 +11,7 @@
 
 .form {
     margin: 0 auto;
-    width: 40%;
+    width: 45%;
     text-align: center;
 }
 
@@ -24,6 +24,7 @@
     height: 200px;
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 
 .profile__image{
@@ -81,12 +82,12 @@
 .form__button-submit {
     padding: 10px;
     width: 100%;
-    height: 40px;
+    height: 50px;
     border: none;
     border-radius: 3px;
     background: #ff5555;
     color: #fff;
     cursor: pointer;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
 }

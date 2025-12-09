@@ -66,6 +66,10 @@
     width: 100%;
 }
 
+.address__inner__address{
+    font-weight: bold;
+}
+
 .address__inner__shipping{
     display: flex;
     justify-content: space-between;
@@ -99,7 +103,9 @@
     text-align: center;
 }
 
-
+.main__right td.td__price {
+    font-size: 32px;
+}
 
 .purchase__button {
     display: inline-block;
@@ -119,4 +125,5 @@
     height: 20px;
     color: #ff0000;
     text-align: left;
+    margin-left: 50px;
 }
