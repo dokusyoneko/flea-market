@@ -66,7 +66,9 @@
                 <div class="error-message">{{ $message }}</div>
             @enderror
             <h3>販売価格</h3>
-            <input type="text" name="price" value="{{ old('price') }}">
+            <div class="price-input-wrapper">
+                <input type="text" name="price" value="{{ old('price') }}">
+            </div>
             @error('price')
                 <div class="error-message">{{ $message }}</div>
             @enderror

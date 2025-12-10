@@ -19,6 +19,13 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            $user = Auth::user();
+
+            if (is_null($user->email_verified_at)) {
+                return redirect()->route('verification.notice.custom');
+            }
+
+
             return redirect()->intended('/');
         }
 
