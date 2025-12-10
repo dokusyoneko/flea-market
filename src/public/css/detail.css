@@ -112,6 +112,7 @@ main {
 }
 
 .main__right__subtitle--sub{
+    min-width: 100px;
     margin:5px 50px 5px 0px;
     align-items: center;
 }
@@ -120,6 +121,11 @@ main {
 .conditions{
     display: flex;
     align-items: center;
+}
+
+.categories {
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .main__right__category{
@@ -132,6 +138,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
+    max-width: 100%;
 }
 
 .main__right__condition{
