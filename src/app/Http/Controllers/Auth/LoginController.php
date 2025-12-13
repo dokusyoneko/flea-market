@@ -24,8 +24,6 @@ class LoginController extends Controller
             if (is_null($user->email_verified_at)) {
                 return redirect()->route('verification.notice.custom');
             }
-
-
             return redirect()->intended('/');
         }
 
