@@ -7,16 +7,6 @@
 - ターゲットユーザー: 10〜30代の社会人  
 - 対応ブラウザ: Chrome / Firefox / Safari 最新版  
 
-## 使用技術
-- 言語: PHP 8.1.33  
-- フレームワーク: Laravel 8.83.29  
-- データベース: MySQL 8.0.26  
-- バージョン管理: GitHub  
-- コンテナ環境: Docker 28.3.2  
-- Webサーバー: Nginx 1.21.1
-- メール送信テスト: Mailhog  
-- 決済機能: Stripe (各自でテストキーを導入してください)
-
 ## 環境構築
 Docker ビルド  
 git clone https://github.com/dokusyoneko/flea-market.git  
@@ -36,6 +26,16 @@ php artisan storage:link
 `.env` ファイルに以下の環境変数を設定してください。  
 STRIPE_SECRET=your_stripe_secret_here  
 STRIPE_KEY=your_stripe_key_here  
+
+## 使用技術
+- 言語: PHP 8.1.33  
+- フレームワーク: Laravel 8.83.29  
+- データベース: MySQL 8.0.26  
+- バージョン管理: GitHub  
+- コンテナ環境: Docker 28.3.2  
+- Webサーバー: Nginx 1.21.1
+- メール送信テスト: Mailhog  
+- 決済機能: Stripe (各自でテストキーを導入してください)
 
 ## ER図
 <img width="1262" height="702" alt="flea-market ER図" src="https://github.com/user-attachments/assets/8bfc3287-ca43-464a-8cc0-8dbe257a16bb" />
