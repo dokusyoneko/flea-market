@@ -18,7 +18,7 @@
         <div class="header__inner">
             <div class="header-utilities">
                 <a href="/">
-                    <img src="{{ asset('storage/logo/Logo.png') }}" alt="ロゴ画像">
+                    <img src="{{ asset('images/Logo.png') }}" alt="ロゴ画像">
                 </a>
                 @unless(in_array(Route::currentRouteName(), [
                     'login.show',
