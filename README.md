@@ -24,6 +24,7 @@ docker-compose up -d --build
 (※ MySQL が起動しない場合は、各PCの環境に合わせて docker-compose.yml を編集してください。)  
 docker-compose exec php bash  
 composer install  
+composer require stripe/stripe-php  
 cp .env.example .env  
 (※環境変数を編集)  
 php artisan key:generate  
